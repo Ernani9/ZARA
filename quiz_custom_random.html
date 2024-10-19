@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Ambiente e Sostenibilità</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #2F4F4F;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answers label {
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        // Funzione per mescolare un array
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Domande del quiz con risposte
+        const questions = [
+            {
+                question: "LA TERRA ASSORBE I NOSTRI RIFIUTI?",
+                answers: [
+                    "A) Sì",
+                    "B) No"
+                ]
+            },
+            {
+                question: "PERCHÉ LA TERRA È IN SOFFERENZA?",
+                answers: [
+                    "A) Inquinamento e rifiuti",
+                    "B) Cambiamenti climatici",
+                    "C) Entrambi"
+                ]
+            },
+            {
+                question: "COSA È L’ECONOMIA CIRCOLARE?",
+                answers: [
+                    "A) Un modello economico che promuove il riuso e il riciclo",
+                    "B) Un modello economico lineare",
+                    "C) Un sistema di produzione a basso costo"
+                ]
+            },
+            {
+                question: "Dove va buttata (campione-> etichetta del sint-carta gialla)?",
+                answers: [
+                    "A) Indifferenziata",
+                    "B) Carta",
+                    "C) Plastica"
+                ]
+            },
+            {
+                question: "I tre pilastri dello sviluppo sostenibile sono:",
+                answers: [
+                    "A) La condivisione, la pace, la società",
+                    "B) Ambiente, clima, circolarità",
+                    "C) La società, l'economia, l'ambiente"
+                ]
+            },
+            {
+                question: "Quali sono le tre tipologie di etichette che possiamo trovare su un capo JOIN LIFE?",
+                answers: [
+                    "A) Care for Fiber, Care for Planet, Car for People",
+                    "B) Care for Fiber, Care for Water, Care for Planet",
+                    "C) Care for Social, Care for Earth, Care for Materials"
+                ]
+            },
+            {
+                question: "Quale fibra tessile sintetica utilizza Zara che è ottenuta riciclando una bottiglia Pet?",
+                answers: [
+                    "A) Poliestere riciclato",
+                    "B) Tenceltm Lyocell",
+                    "C) Modal"
+                ]
+            },
+            {
+                question: "Quale modello economico sta proponendo il Parlamento Europeo?",
+                answers: [
+                    "A) Economia Lineare: Materie Prime, Produzione, Uso, Rifiuti non Riciclabili",
+                    "B) Economia Del Riuso: Materie Prime, Produzione, Riciclo, Uso Rifiuti non Riciclabili",
+                    "C) Economia Circolare: Materie Prime, Riciclo, Produzione, Uso"
+                ]
+            }
+        ];
+
+        // Funzione per mostrare una singola domanda casuale
+        function loadRandomQuestion() {
+            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+            shuffle(randomQuestion.answers);
+            let questionContent = `<h2>${randomQuestion.question}</h2>`;
+            randomQuestion.answers.forEach(answer => {
+                questionContent += `<div class="answers"><label><input type="radio" name="q"> ${answer}</label></div>`;
+            });
+            document.getElementById('quiz').innerHTML = questionContent;
+        }
+
+        // Caricare una domanda casuale al caricamento della pagina
+        window.onload = loadRandomQuestion;
+    </script>
+</head>
+<body>
+
+    <h1>Quiz sull'ambiente e sostenibilità</h1>
+    <div id="quiz"></div>
+
+</body>
+</html>
